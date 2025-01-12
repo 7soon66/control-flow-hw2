@@ -2,32 +2,32 @@
 
 {% block content %}
 
-<h1>Cat Detail</h1>
+<h1>Donkey Detail</h1>
 
   <div class="card">
     <div class="card-content">
       <div class="flex-container">
 
       <div>
-        <span class="card-title">{{ cat.name }}</span>
-        <p>Breed: {{ cat.breed }} </p>
-        <p>Description: {{ cat.describtion }} </p>
+        <span class="card-title">{{ donkey.name }}</span>
+        <p>Breed: {{ donkey.breed }} </p>
+        <p>Description: {{ donkey.describtion }} </p>
 
-        {% if cat.age > 0 %}
-          <p>Age: {{ cat.age }}</p>
+        {% if donkey.age > 0 %}
+          <p>Age: {{ donkey.age }}</p>
         {% else %}
           <p>Age: Kitten</p>
         {% endif %}
 
         <div class="">
-          <a href="{% url 'cats_update' cat.id %}">Edit</a>
-          <a href="{% url 'cats_delete' cat.id %}">Delete</a>
+          <a href="{% url 'donkeys_update' donkey.id %}">Edit</a>
+          <a href="{% url 'donkeys_delete' donkey.id %}">Delete</a>
         </div>
       </div>
 
       <div>
         {% load static %}
-        <img src="{% static cat.image|cut:'main_app/static/' %}" width="100px" height="100px">
+        <img src="{% static donkey.image|cut:'main_app/static/' %}" width="100px" height="100px">
       </div>
 
     </div>
@@ -36,7 +36,7 @@
 
   <div>
     <div>
-      <form method="POST" action="{% url "add_feeding" cat.id %}" >
+      <form method="POST" action="{% url "add_feeding" donkey.id %}" >
         {% csrf_token %}
         {{ feeding_form.as_p }}
         <input type="submit" class="btn" value="Add Feeding">
@@ -49,7 +49,7 @@
           <th>Meal </th>
         </tr>
       </thead>
-      {% for feeding in cat.feeding_set.all %}
+      {% for feeding in donkey.feeding_set.all %}
       <tr>
         <td>{{ feeding.date }}</td>
         <td>{{ feeding.get_meal_display }}</td>

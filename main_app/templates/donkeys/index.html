@@ -2,21 +2,21 @@
 
 {% block content %}
 
-<h1>Cat List</h1>
+<h1>Donkey List</h1>
 
-{% for cat in cats %}
+{% for donkey in donkeys %}
   <div class="card">
-    <a href="{% url 'detail' cat.id %}">
+    <a href="{% url 'detail' donkey.id %}">
     <div class="card-content">
       <div class="flex-container">
 
       <div>
-        <span class="card-title">{{ cat.name }}</span>
-        <p>Breed: {{ cat.breed }} </p>
-        <p>Description: {{ cat.description }} </p>
+        <span class="card-title">{{ donkey.name }}</span>
+        <p>Breed: {{ donkey.breed }} </p>
+        <p>Description: {{ donkey.describtion }} </p>
 
-        {% if cat.age > 0 %}
-          <p>Age: {{ cat.age }}</p>
+        {% if donkey.age > 0 %}
+          <p>Age: {{ donkey.age }}</p>
         {% else %}
           <p>Age: Kitten</p>
         {% endif %}
@@ -24,7 +24,7 @@
 
       <div>
         {% load static %}
-        <img src="{% static cat.image|cut:'main_app/static/' %}" width="100px" height="100px">
+        <img src="{% static donkey.image|cut:'main_app/static/' %}" width="100px" height="100px">
       </div>
 
     </div>

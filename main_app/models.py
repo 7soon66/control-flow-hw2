@@ -27,6 +27,7 @@ class Donkey(models.Model):
     def __str__(self):
         return self.name
 
+
 class Feeding(models.Model):
     date=models.DateField()
     meal =models.CharField(max_length=1,choices=MEALS,default=MEALS[0][0])

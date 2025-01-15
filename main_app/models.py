@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -8,6 +9,18 @@ MEALS=(
     ('L','Lunch'),
     ('D','Dinner')
 )
+
+class Toy(models.Model):
+    name=models.CharField(max_length=50)
+    color=models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse("toys_detail", kwargs={"pk": self.id})
+    
 
 #if you want to access meals MEALS[0][0]
 
@@ -19,14 +32,14 @@ class Donkey(models.Model):
     # image = models.CharField(default=None, blank=True, null=True, max_length=2000)
 
     image=models.ImageField(upload_to='main_app/static/upload/',default="")
-
+    toys=models.ManyToManyField(Toy)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse("detail", kwargs={"donkey_id": self.id})
     
     def __str__(self):
         return self.name
-
 
 class Feeding(models.Model):
     date=models.DateField()
